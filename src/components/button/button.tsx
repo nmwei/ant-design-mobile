@@ -63,6 +63,8 @@ export const Button = forwardRef<ButtonRef, ButtonProps>((p, ref) => {
   const disabled = props.disabled || loading
 
   useImperativeHandle(ref, () => ({
+    // 减少暴露给父组件获取的DOM元素属性, 只暴露给父组件需要用到的DOM方法
+    // https://www.jianshu.com/p/92def9e95af5
     get nativeElement() {
       return nativeButtonRef.current
     },

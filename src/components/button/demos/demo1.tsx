@@ -1,13 +1,16 @@
-import React from 'react'
+import React, {useRef} from 'react'
 import { Button, Space } from 'antd-mobile'
 import { DemoBlock } from 'demos'
 
 export default () => {
+  const ref= useRef();
   return (
     <>
       <DemoBlock title='填充模式'>
         <Space wrap>
-          <Button color='primary' fill='solid'>
+          <Button ref={ref} onClick={() => {
+            console.log(ref);
+          }} color='primary' fill='solid'>
             Solid
           </Button>
           <Button color='primary' fill='outline'>
