@@ -56,7 +56,7 @@ const defaultProps: ButtonProps = {
 }
 
 export const Button = forwardRef<ButtonRef, ButtonProps>((p, ref) => {
-  const props = mergeProps(defaultProps, p)
+  const props = mergeProps(defaultProps, p) //函数式组件，通过mergeProps的方式实现defaultProps
   const [innerLoading, setInnerLoading] = useState(false)
   const nativeButtonRef = useRef<HTMLButtonElement>(null)
   const loading = props.loading === 'auto' ? innerLoading : props.loading
@@ -72,10 +72,10 @@ export const Button = forwardRef<ButtonRef, ButtonProps>((p, ref) => {
 
   const handleClick: React.MouseEventHandler<HTMLButtonElement> = async e => {
     if (!props.onClick) return
-
     const promise = props.onClick(e)
-
+     //点击事件添加动画实现
     if (isPromise(promise)) {
+      //通过promise.then是否是一个方法来判断是否是promise
       try {
         setInnerLoading(true)
         await promise
@@ -88,6 +88,7 @@ export const Button = forwardRef<ButtonRef, ButtonProps>((p, ref) => {
   }
 
   return withNativeProps(
+    //将原生支持的props: className、style、tabIndex、data-xxx、aria-xxx传入组件。
     props,
     <button
       ref={nativeButtonRef}
@@ -96,6 +97,7 @@ export const Button = forwardRef<ButtonRef, ButtonProps>((p, ref) => {
       className={classNames(
         classPrefix,
         props.color ? `${classPrefix}-${props.color}` : null,
+        //在ClassNames中，如果要支持一个计算的class类名，需要使用[]数组形式
         {
           [`${classPrefix}-block`]: props.block,
           [`${classPrefix}-disabled`]: disabled,
@@ -108,7 +110,7 @@ export const Button = forwardRef<ButtonRef, ButtonProps>((p, ref) => {
         },
         `${classPrefix}-shape-${props.shape}`
       )}
-      disabled={disabled}
+      disabled={disabled}  //disabled是button支持的原生属性
       onMouseDown={props.onMouseDown}
       onMouseUp={props.onMouseUp}
       onTouchStart={props.onTouchStart}
