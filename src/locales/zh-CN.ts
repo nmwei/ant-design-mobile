@@ -3,6 +3,7 @@ import { base } from './base'
 
 const typeTemplate = '${label}不是一个有效的${type}'
 
+//使用多层嵌套对象标识国际化
 const zhCN = mergeLocale(base, {
   locale: 'zh-CH',
   common: {

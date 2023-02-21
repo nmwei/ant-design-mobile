@@ -27,6 +27,7 @@ const ConfigContext = React.createContext<Config | null>(null)
 
 export type ConfigProviderProps = Config
 
+//使用context支持国际化
 export const ConfigProvider: FC<ConfigProviderProps> = props => {
   const { children, ...config } = props
   const parentConfig = useConfig()
