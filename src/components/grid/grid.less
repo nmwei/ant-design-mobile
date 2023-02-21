@@ -1,4 +1,5 @@
 @class-prefix-grid: ~'adm-grid';
+//类和less文件中先定义这个常量，很多样式都是通过这个常量扩展的。
 
 .@{class-prefix-grid} {
   --gap: 0;
@@ -9,6 +10,7 @@
   grid-gap: 10px;
   column-gap: var(--gap-horizontal);
   row-gap: var(--gap-vertical);
+  //使用grid-template-columns实现网格布局
   grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
   align-items: stretch;
   &-item {
