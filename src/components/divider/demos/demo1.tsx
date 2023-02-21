@@ -16,6 +16,7 @@ export default () => {
       </DemoBlock>
 
       <DemoBlock title='自定义样式'>
+        {/*将内部线型以及分割线的样式通过style的方式支持*/}
         <Divider
           style={{
             color: '#1677ff',
