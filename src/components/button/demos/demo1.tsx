@@ -1,6 +1,7 @@
 import React, {useRef} from 'react'
 import { Button, Space } from 'antd-mobile'
 import { DemoBlock } from 'demos'
+import './demo1.less'
 
 export default () => {
   const ref= useRef();
@@ -8,7 +9,7 @@ export default () => {
     <>
       <DemoBlock title='填充模式'>
         <Space wrap>
-          <Button ref={ref} onClick={() => {
+          <Button className={'btn1'} ref={ref} onClick={() => {
             console.log(ref);
           }} color='primary' fill='solid'>
             Solid
