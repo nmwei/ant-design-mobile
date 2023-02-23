@@ -78,6 +78,7 @@ export const CapsuleTabs: FC<CapsuleTabsProps> = props => {
     <div className={classPrefix} ref={rootRef}>
       <div className={`${classPrefix}-header`}>
         <ScrollMask scrollTrackRef={tabListContainerRef} />
+        {/*使用@react-spring/web实现简单动画*/}
         <animated.div
           className={`${classPrefix}-tab-list`}
           ref={tabListContainerRef}
@@ -113,6 +114,7 @@ export const CapsuleTabs: FC<CapsuleTabsProps> = props => {
           return null
         }
         const active = pane.key === activeKey
+        /*ShouldRender是一个通用组件*/
         return (
           <ShouldRender
             key={pane.key}
